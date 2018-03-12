@@ -1,7 +1,8 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+import * as htmlWebPackPlugin from 'html-webpack-plugin';
+import * as webpack from 'webpack';
 
-module.exports = {
-  devtool: "inline-source-map",
+const config: webpack.Configuration = {
+  devtool: "eval-source-map",
   module: {
     rules: [
       {
@@ -23,9 +24,11 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebPackPlugin({
+    new htmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
     })
   ]
 };
+
+export default config;
