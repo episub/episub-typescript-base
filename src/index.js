@@ -1,1 +1,1 @@
-console.log('Test Webpack Build')
+import App from "./App";
