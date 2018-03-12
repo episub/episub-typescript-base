@@ -1,7 +1,6 @@
 {
   "name": "episub-typescript-base",
   "version": "1.0.0",
-  "main": "index.js",
   "author": "myrovh <myrovh@yandex.com>",
   "license": "MIT",
   "private": true,
@@ -10,6 +9,7 @@
     "webpack-cli": "^2.0.11"
   },
   "scripts": {
-    "build": "webpack"
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
   }
 }
