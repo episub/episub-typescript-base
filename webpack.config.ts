@@ -3,9 +3,6 @@ import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import * as htmlWebPackPlugin from 'html-webpack-plugin';
 import * as webpack from 'webpack';
 
-import * as packageJson from './package.json';
-const vendorDependencies = Object.keys(packageJson['dependencies']);
-
 const config: webpack.Configuration = {
   devServer: {
     https: true,
@@ -13,7 +10,6 @@ const config: webpack.Configuration = {
   devtool: 'source-map',
   entry: {
     main: './src/index.tsx',
-    vendor: vendorDependencies
   },
   module: {
     rules: [
