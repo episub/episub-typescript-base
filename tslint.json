@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint:recommended", "tslint-react"],
+  "extends": ["tslint:recommended", "tslint-xo/space", "tslint-react"],
   "rules": {
     "quotemark": [true, "single", "jsx-double"]
   }

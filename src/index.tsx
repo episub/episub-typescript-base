@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-const App = () => {
+const APP = () => {
   return (
     <div>
       <p>React here!</p>
@@ -10,4 +10,4 @@ const App = () => {
     </div>
   );
 };
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<APP />, document.getElementById('app'));

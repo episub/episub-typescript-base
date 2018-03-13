@@ -4,6 +4,9 @@ import * as htmlWebPackPlugin from 'html-webpack-plugin';
 import * as webpack from 'webpack';
 
 const config: webpack.Configuration = {
+  devServer: {
+    https: true,
+  },
   devtool: 'source-map',
   module: {
     rules: [
