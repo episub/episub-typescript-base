@@ -7,8 +7,8 @@ const config: webpack.Configuration = {
   module: {
     rules: [
       {
-        test: /\.ts(x?)$/,
         exclude: /node_modules/,
+        test: /\.ts(x?)$/,
         use: [
           'babel-loader',
           {
@@ -18,8 +18,8 @@ const config: webpack.Configuration = {
         ],
       },
       {
-        test: /\.js(x?)$/,
         exclude: /node_modules/,
+        test: /\.js(x?)$/,
         use: {
           loader: 'babel-loader',
         },
@@ -37,8 +37,8 @@ const config: webpack.Configuration = {
   },
   plugins: [
     new htmlWebPackPlugin({
-      template: './src/index.html',
       filename: './index.html',
+      template: './src/index.html',
     }),
     new ForkTsCheckerWebpackPlugin({
       tslint: true,
