@@ -1,16 +1,19 @@
-import * as htmlWebPackPlugin from 'html-webpack-plugin';
-import * as webpack from 'webpack';
+import * as htmlWebPackPlugin from "html-webpack-plugin";
+import * as webpack from "webpack";
 
 const config: webpack.Configuration = {
-  devtool: "eval-source-map",
+  devtool: "inline-source-map",
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.ts(x?)$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
+        use: [
+          "babel-loader",
+          {
+            loader: "ts-loader"
+          }
+        ]
       },
       {
         test: /\.html$/,
@@ -28,7 +31,10 @@ const config: webpack.Configuration = {
       template: "./src/index.html",
       filename: "./index.html"
     })
-  ]
+  ],
+  resolve: {
+    extensions: [".ts", ".tsx"]
+  }
 };
 
 export default config;
