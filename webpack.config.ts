@@ -3,11 +3,18 @@ import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import * as htmlWebPackPlugin from 'html-webpack-plugin';
 import * as webpack from 'webpack';
 
+import * as packageJson from './package.json';
+const vendorDependencies = Object.keys(packageJson['dependencies']);
+
 const config: webpack.Configuration = {
   devServer: {
     https: true,
   },
   devtool: 'source-map',
+  entry: {
+    main: './src/index.tsx',
+    vendor: vendorDependencies
+  },
   module: {
     rules: [
       {
@@ -51,7 +58,7 @@ const config: webpack.Configuration = {
     new ForkTsCheckerNotifierWebpackPlugin({alwaysNotify: true}),
   ],
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
   },
 };
 
