@@ -1,3 +1,4 @@
+import * as ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import * as htmlWebPackPlugin from "html-webpack-plugin";
 import * as webpack from "webpack";
 
@@ -11,9 +12,17 @@ const config: webpack.Configuration = {
         use: [
           "babel-loader",
           {
-            loader: "ts-loader"
+            loader: "ts-loader",
+            options: { transpileOnly: true }
           }
         ]
+      },
+      {
+        test: /\.js(x?)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
       },
       {
         test: /\.html$/,
@@ -30,10 +39,11 @@ const config: webpack.Configuration = {
     new htmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
-    })
+    }),
+    new ForkTsCheckerWebpackPlugin()
   ],
   resolve: {
-    extensions: [".ts", ".tsx"]
+    extensions: [".ts", ".tsx", ".js", ".jsx"]
   }
 };
 
