@@ -8,9 +8,6 @@ const config: webpack.Configuration = {
     https: true,
   },
   devtool: 'source-map',
-  entry: {
-    main: './src/index.tsx',
-  },
   module: {
     rules: [
       {
@@ -42,6 +39,18 @@ const config: webpack.Configuration = {
       },
     ],
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          chunks: 'initial',
+          name: 'vendor',
+          priority: 10,
+          test: /node_modules/,
+        },
+      },
+    },
+  },
   plugins: [
     new htmlWebPackPlugin({
       filename: './index.html',
@@ -54,7 +63,7 @@ const config: webpack.Configuration = {
     new ForkTsCheckerNotifierWebpackPlugin({alwaysNotify: true}),
   ],
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
 };
 

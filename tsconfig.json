@@ -4,6 +4,7 @@
     "module": "commonjs",
     "jsx": "preserve",
     "sourceMap": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "strictNullChecks": true
   }
 }
