@@ -3,7 +3,7 @@ import * as htmlWebPackPlugin from 'html-webpack-plugin';
 import * as webpack from 'webpack';
 
 const config: webpack.Configuration = {
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   module: {
     rules: [
       {
