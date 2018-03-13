@@ -14,8 +14,11 @@
     "fork-ts-checker-webpack-plugin": "^0.4.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.0.6",
+    "prettier": "^1.11.1",
     "ts-loader": "^4.0.1",
     "ts-node": "^5.0.1",
+    "tslint": "^5.9.1",
+    "tslint-react": "^3.5.1",
     "typescript": "^2.8.0-dev.20180308",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.11",
@@ -24,7 +27,10 @@
   "scripts": {
     "start": "webpack-dev-server --progress --mode development --open",
     "dev": "webpack --progress --mode development",
-    "build": "webpack --progress --mode production"
+    "build": "webpack --progress --mode production",
+    "format-all": "yarn prettier --write \"**/*.@(ts*|js*|json)\"",
+    "lint": "yarn tslint -p ./tsconfig.json",
+    "fix": "yarn tslint -p ./tsconfig.json --fix"
   },
   "dependencies": {
     "react": "^16.2.0",

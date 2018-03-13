@@ -1,50 +1,53 @@
-import * as ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
-import * as htmlWebPackPlugin from "html-webpack-plugin";
-import * as webpack from "webpack";
+import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import * as htmlWebPackPlugin from 'html-webpack-plugin';
+import * as webpack from 'webpack';
 
 const config: webpack.Configuration = {
-  devtool: "inline-source-map",
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
         test: /\.ts(x?)$/,
         exclude: /node_modules/,
         use: [
-          "babel-loader",
+          'babel-loader',
           {
-            loader: "ts-loader",
-            options: { transpileOnly: true }
-          }
-        ]
+            loader: 'ts-loader',
+            options: {transpileOnly: true},
+          },
+        ],
       },
       {
         test: /\.js(x?)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader",
-            options: { minimize: true }
-          }
-        ]
-      }
-    ]
+            loader: 'html-loader',
+            options: {minimize: true},
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new htmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html"
+      template: './src/index.html',
+      filename: './index.html',
     }),
-    new ForkTsCheckerWebpackPlugin()
+    new ForkTsCheckerWebpackPlugin({
+      tslint: true,
+      workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE,
+    }),
   ],
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"]
-  }
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+  },
 };
 
 export default config;
