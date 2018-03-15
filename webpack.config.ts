@@ -1,9 +1,8 @@
 import * as ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-webpack-plugin';
 import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import * as htmlWebPackPlugin from 'html-webpack-plugin';
-import * as webpack from 'webpack';
 
-const config: webpack.Configuration = {
+const config = {
   devServer: {
     https: true,
   },
@@ -44,6 +43,7 @@ const config: webpack.Configuration = {
       cacheGroups: {
         vendor: {
           chunks: 'initial',
+          enforce: true,
           name: 'vendor',
           priority: 10,
           test: /node_modules/,
