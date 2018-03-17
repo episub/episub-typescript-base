@@ -3,9 +3,6 @@ import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import * as htmlWebPackPlugin from 'html-webpack-plugin';
 
 const config = {
-  devServer: {
-    https: true,
-  },
   devtool: 'source-map',
   module: {
     rules: [
