@@ -31,6 +31,8 @@ files in the project.
 `yarn fix`: Tslint will attempt to fix any lint errors it knows how to
 auto-solve.
 
+`yarn upgrade`: Upgrade all dependencies to their latest version.
+
 ## Visual Studio Code
 
 ### Recommended Extensions

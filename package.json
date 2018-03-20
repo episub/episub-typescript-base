@@ -15,14 +15,14 @@
     "fork-ts-checker-notifier-webpack-plugin": "^0.4.0",
     "fork-ts-checker-webpack-plugin": "^0.4.1",
     "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.0.6",
+    "html-webpack-plugin": "^3.0.7",
     "prettier": "^1.11.1",
     "ts-loader": "^4.1.0",
     "ts-node": "^5.0.1",
     "tslint": "^5.9.1",
     "tslint-react": "^3.5.1",
     "tslint-xo": "^0.6.0",
-    "typescript": "^2.8.0-dev.20180318",
+    "typescript": "^2.8.0-dev.20180320",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.12",
     "webpack-dev-server": "^3.1.1"
@@ -33,7 +33,8 @@
     "build": "webpack --progress --mode production",
     "format-all": "yarn prettier --write \"**/*.@(ts*|js*|json)\"",
     "lint": "yarn tslint -p ./tsconfig.json",
-    "fix": "yarn tslint -p ./tsconfig.json --fix"
+    "fix": "yarn tslint -p ./tsconfig.json --fix",
+    "upgrade": "yarn upgrade --latest && yarn add -D typescript@next"
   },
   "dependencies": {
     "react": "^16.2.0",
