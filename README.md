@@ -1,7 +1,7 @@
 # Episub Typescript Base
 
 This is a bootstrap repo designed to formalise the recommended way to build
-client side applications at Episub.
+single page client side applications at Episub.
 
 ## Adding new packages
 
@@ -10,6 +10,77 @@ a client side application. If you wish to add more make sure you include type
 definitions for any dependencies that don't include them by default.
 
 ## Build Setup
+
+This repo is setup using Webpack 4. With babel + typescript loaders and separate
+vendor bundling. Details about each section in the config are listed below.
+
+### devtool
+
+The bundle is setup to use 'source-map' which will emit the source maps in a
+separate file. This is usable in both development and production as the separate
+source map can be used to trace errors to their associated lines in production
+code without having to make the source maps available to the public.
+
+### Loaders
+
+#### ts-loader
+
+Webpack will load all `.ts` and `.tsx` files through ts-loader. The files will
+be transpiled from typescript into esnext javascript code and leave any jsx code
+untouched. The typescript won't be type checked at this stage.
+
+#### babel-loader
+
+All `.js` and `.jsx` files as well as the previously transpiled typescript will
+be transpiled into es5 javascript with any necessary polyfills in order the meet
+the target compatibility defined in the `.babelrc` file. See the
+[@babel/preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env)
+docs for more details about how this works.
+
+#### html-loader
+
+Emits the html files processed by the html plugin as part of our final bundle
+along with the javascript.
+
+Note: If your html template includes images or links you may need additional
+loaders. See the [documentation](https://webpack.js.org/loaders/html-loader/)
+for additional detail if you require more options.
+
+### Plugins
+
+#### Fork-Ts-Checker
+
+When ts-loader transpiles our typescript we don't type check because we perform
+our typing and linting here in a separate fork in improve build speeds.
+Fork-Ts-Checker will run the tsc compiler and tslint in a separate fork to the
+actual build. Usually the build itself will finish slightly before the type
+checking.
+
+Note: Fork-Ts-Checker is pulling its settings from `tsconfig.json` not from
+`webpack.config.ts` so make sure that `tsconfig.json` is configured to point to
+all the files you wish to be checked.
+
+Note: Fork-Ts-Checker will not check .js files but can be configured to do so if
+the appropriate setting is enabled in `tsconfig.json` and `tslint.json`.
+
+#### Fork-Ts-Checker-Notifier
+
+Fork-Ts-Checker-Notifier will send system notifications on completion of
+ts-checker on every build. This will make easier to see if new rebuilds are
+causing errors even if the running terminal isn't visible. Notifications should
+appear without any configuration on your part but you can check the
+[requirements](https://github.com/mikaelbr/node-notifier#requirements) in the
+documentation for node-notifier.
+
+#### html
+
+The html plugin adds the `<script>` tags for the javascript bundles into the html template.
+
+### Cache Chunks
+
+Webpack 4 has a new configuration option that allow us to easily separate libraries we include into its own bundle making for faster client downloads and more efficient caching as well a faster build times in development.
+
+Unless your application is very large webpack will produce two bundle.js files. One called `main.js` contains all the code contained in the `src` folder. The other bundle called `vendor.js` will include any node modules that have been imported by `main.js`.
 
 ## Scripts
 
