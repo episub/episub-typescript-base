@@ -72,9 +72,19 @@ appear without any configuration on your part but you can check the
 [requirements](https://github.com/mikaelbr/node-notifier#requirements) in the
 documentation for node-notifier.
 
-#### html
+#### HTML
 
-The html plugin adds the `<script>` tags for the javascript bundles into the html template.
+The HTML plugin adds the `<script>` tags for the javascript bundles into the html template.
+
+#### Webapp
+
+The Webapp plugin is used to generate favicons and configurations for pinning
+the application in various operating systems. The default configuration only
+generates normal icons for use by web browsers. The icon can be a `.png` or
+`.svg` file (svg is recommended).
+
+See the [documentation](https://github.com/brunocodutra/webapp-webpack-plugin)
+for additional configuration options.
 
 ### Cache Chunks
 

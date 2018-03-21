@@ -1,6 +1,7 @@
 import * as ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-webpack-plugin';
 import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import * as htmlWebPackPlugin from 'html-webpack-plugin';
+import * as HtmlWebPackPlugin from 'html-webpack-plugin';
+import * as WebappWebpackPlugin from 'webapp-webpack-plugin';
 
 const config = {
   devtool: 'source-map',
@@ -49,9 +50,24 @@ const config = {
     },
   },
   plugins: [
-    new htmlWebPackPlugin({
+    new HtmlWebPackPlugin({
       filename: './index.html',
       template: './src/index.html',
+    }),
+    new WebappWebpackPlugin({
+      favicons: {
+        icons: {
+          android: false, // Create Android homescreen icon. `boolean` or `{ offset, background, shadow }`
+          appleIcon: false, // Create Apple touch icons. `boolean` or `{ offset, background }`
+          appleStartup: false, // Create Apple startup images. `boolean` or `{ offset, background }`
+          coast: false, // Create Opera Coast icon. `boolean` or `{ offset, background }`
+          favicons: true, // Create regular favicons. `boolean`
+          firefox: false, // Create Firefox OS icons. `boolean` or `{ offset, background }`
+          windows: false, // Create Windows 8 tile icons. `boolean` or `{ background }`
+          yandex: false, // Create Yandex browser icon. `boolean` or `{ background }`
+        },
+      },
+      logo: './src/wrench.svg',
     }),
     new ForkTsCheckerWebpackPlugin({
       tslint: true,
