@@ -3,6 +3,12 @@
 This is a bootstrap repo designed to formalise the recommended way to build
 single page client side applications at Episub.
 
+## Bugs
+
+* Every second build the typescript compiler reports modules not found. The
+  build still succeeds and the code is still valid. This is assumed to be an
+  issue with react-hot-loader.
+
 ## Adding new packages
 
 This setup comes with a set of standard packages recommended for using to build
@@ -151,8 +157,7 @@ Some helpful spell checking (set language to en-GB in settings).
 Visual Studio Code has good debugging tools that work well with this repo.
 Ensure that vscode has the 'Debugger for Chrome' or the 'Debugger for Firefox'
 extension installed. If on Linux make sure that `/usr/bin/google-chrome` points
-to an instance of google chrome on you machine (eg on Arch Linux: `ln -s
-/usr/bin/google-chrome-stable /usr/bin/google-chrome`). If using Firefox on
+to an instance of google chrome on you machine (eg on Arch Linux: `ln -s /usr/bin/google-chrome-stable /usr/bin/google-chrome`). If using Firefox on
 Linux ensure that `firefox` or `firefox-developer` is on your path. The Firefox
 debugger extension will default to using the developer edition if it is
 installed.
@@ -168,5 +173,5 @@ to refresh the page in the browser to catch such early breakpoints.
 
 ## TODO
 
-- Implement happypack to multithread loaders. This might not be possible with
+* Implement happypack to multithread loaders. This might not be possible with
   nested loaders but worth checking out when code base gets larger.
