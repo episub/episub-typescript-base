@@ -14,6 +14,16 @@ definitions for any dependencies that don't include them by default.
 This repo is setup using Webpack 4. With babel + typescript loaders and separate
 vendor bundling. Details about each section in the config are listed below.
 
+### Hot Reloading
+
+Webpack runs in 'hot' mode when run through the `yarn start` command. Hot
+reloading allows for in place reloading of modified modules. By default the
+application is configured to use react-hot-loader to perform replacement of
+react components. This means updates can be compiled and inserted into the
+running website without reloading or losing the state of a react component. This
+does require a wrapper around your root react component. See
+[documentation](https://github.com/gaearon/react-hot-loader) for more details.
+
 ### devtool
 
 The bundle is setup to use 'source-map' which will emit the source maps in a
