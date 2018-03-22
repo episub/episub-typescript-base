@@ -5,6 +5,7 @@
     "jsx": "preserve",
     "sourceMap": true,
     "outDir": "dist",
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "noImplicitAny": false
   }
 }
