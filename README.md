@@ -175,3 +175,4 @@ to refresh the page in the browser to catch such early breakpoints.
 
 * Implement happypack to multithread loaders. This might not be possible with
   nested loaders but worth checking out when code base gets larger.
+* Implement a React ErrorBoundary example
