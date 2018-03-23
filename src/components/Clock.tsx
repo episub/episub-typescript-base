@@ -1,3 +1,4 @@
+import {Card, CardContent, Typography} from 'material-ui';
 import * as React from 'react';
 
 interface IClockState {
@@ -14,10 +15,17 @@ export class Clock extends React.Component<any, IClockState> {
 
   public render() {
     return (
-      <div>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
-        <h3>Application has been running for {this.state.live} seconds.</h3>
-      </div>
+      <Card>
+        <CardContent>
+          <Typography variant="title">Clock</Typography>
+          <Typography variant="display1">
+            {this.state.date.toLocaleTimeString()}
+          </Typography>
+          <Typography variant="body1">
+            Runtime: {this.state.live} sec
+          </Typography>
+        </CardContent>
+      </Card>
     );
   }
 
