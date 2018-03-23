@@ -73,7 +73,7 @@ const config = {
       tslint: true,
       workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE,
     }),
-    new ForkTsCheckerNotifierWebpackPlugin({alwaysNotify: true}),
+    new ForkTsCheckerNotifierWebpackPlugin(),
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
