@@ -1,8 +1,8 @@
-import * as debug from 'debug';
+import * as Debug from 'debug';
 import {Card, CardContent, Typography} from 'material-ui';
 import * as React from 'react';
 
-const logger = debug('component:Clock');
+const logger = Debug('component:Clock');
 
 interface IClockState {
   date: Date;
