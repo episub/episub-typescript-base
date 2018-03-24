@@ -1,5 +1,8 @@
+import * as debug from 'debug';
 import {Card, CardContent, Typography} from 'material-ui';
 import * as React from 'react';
+
+const logger = debug('component:Clock');
 
 interface IClockState {
   date: Date;
@@ -30,6 +33,7 @@ export class Clock extends React.Component<any, IClockState> {
   }
 
   public componentDidMount() {
+    logger('Clock Loaded');
     this.timerID = setInterval(() => this.tick(), 1000);
   }
 

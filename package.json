@@ -38,6 +38,7 @@
     "auto-upgrade": "yarn upgrade --latest && yarn add -D typescript@next"
   },
   "dependencies": {
+    "debug": "^3.1.0",
     "material-ui": "^1.0.0-beta.38",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
