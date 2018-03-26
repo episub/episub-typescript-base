@@ -4,6 +4,11 @@ import * as HtmlWebPackPlugin from 'html-webpack-plugin';
 import * as WebappWebpackPlugin from 'webapp-webpack-plugin';
 
 const config = {
+  devServer: {
+    disableHostCheck: true,
+    historyApiFallback: true,
+    host: '0.0.0.0',
+  },
   devtool: 'source-map',
   module: {
     rules: [
