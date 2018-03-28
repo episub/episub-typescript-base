@@ -8,11 +8,11 @@ import {Welcome} from '../components/Welcome';
 
 const buttonPage = () => {
   return (
-    <Grid container={true}>
+    <Grid container={true} spacing={16}>
       <Grid item={true} xs={3}>
         <Welcome name="User" />
       </Grid>
-      <Grid item={true} xs={true}>
+      <Grid item={true}>
         <Card>
           <CardContent>
             <Typography variant="body2">
