@@ -5,6 +5,7 @@ import * as WebappWebpackPlugin from 'webapp-webpack-plugin';
 
 const config = {
   devServer: {
+    clientLogLevel: 'warning',
     disableHostCheck: true,
     historyApiFallback: true,
     host: '0.0.0.0',
