@@ -4,8 +4,9 @@
     "module": "commonjs",
     "jsx": "preserve",
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "dist/tsc",
     "strictNullChecks": true,
     "noImplicitAny": false
-  }
+  },
+  "include": ["src/**/*", "webpack.config.ts"]
 }

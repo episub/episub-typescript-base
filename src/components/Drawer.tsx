@@ -12,7 +12,7 @@ import {
 } from 'material-ui';
 import {Clock, GestureTap} from 'mdi-material-ui';
 import * as React from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -58,22 +58,24 @@ const decoratedDrawer = decorate<IDrawerProps>(({children, classes}) => (
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        <Link to="/Clock">
-          <ListItem button={true}>
-            <ListItemIcon>
-              <Clock />
-            </ListItemIcon>
-            <ListItemText primary="Clock" />
-          </ListItem>
-        </Link>
-        <Link to="/Buttons">
-        <ListItem button={true}>
+        <ListItem component={NavLink} to="/clock" button={true}>
+          <ListItemIcon>
+            <Clock />
+          </ListItemIcon>
+          <ListItemText primary="Clock" secondary="Link Here" />
+        </ListItem>
+        <ListItem button={true} component={NavLink} to="/buttons">
           <ListItemIcon>
             <GestureTap />
           </ListItemIcon>
           <ListItemText primary="Buttons" />
         </ListItem>
-        </Link>
+        <ListItem button={true}>
+          <ListItemIcon>
+            <GestureTap />
+          </ListItemIcon>
+          <ListItemText primary="Non Link" secondary="No Link Here" />
+        </ListItem>
       </List>
     </Drawer>
     <main className={classes.content}>

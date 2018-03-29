@@ -15,11 +15,11 @@ const buttonPage = () => {
       <Grid item={true}>
         <Card>
           <CardContent>
-            <Typography variant="body2">
+            <Typography paragraph={true}>
               Modify style using classNames method
             </Typography>
             <ClassNamesFancyButton />
-            <Typography variant="body1">
+            <Typography paragraph={true}>
               Modify style using classes method
             </Typography>
             <ClassesFancyButton />
