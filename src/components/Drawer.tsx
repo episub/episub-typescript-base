@@ -58,18 +58,22 @@ const decoratedDrawer = decorate<IDrawerProps>(({children, classes}) => (
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        <ListItem component={NavLink} to="/clock" button={true}>
-          <ListItemIcon>
-            <Clock />
-          </ListItemIcon>
-          <ListItemText primary="Clock" secondary="Link Here" />
-        </ListItem>
-        <ListItem button={true} component={NavLink} to="/buttons">
-          <ListItemIcon>
-            <GestureTap />
-          </ListItemIcon>
-          <ListItemText primary="Buttons" />
-        </ListItem>
+        <NavLink to="/clock" style={{textDecoration: 'none'}}>
+          <ListItem button={true}>
+            <ListItemIcon>
+              <Clock />
+            </ListItemIcon>
+            <ListItemText primary="Clock" secondary="Link Here" />
+          </ListItem>
+        </NavLink>
+        <NavLink to="/buttons" style={{textDecoration: 'none'}}>
+          <ListItem button={true}>
+            <ListItemIcon>
+              <GestureTap />
+            </ListItemIcon>
+            <ListItemText primary="Buttons" />
+          </ListItem>
+        </NavLink>
         <ListItem button={true}>
           <ListItemIcon>
             <GestureTap />
