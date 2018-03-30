@@ -3,9 +3,6 @@ import {
   Divider,
   Drawer,
   List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   Toolbar,
   Typography,
   withStyles,
@@ -13,6 +10,7 @@ import {
 import {Clock, GestureTap} from 'mdi-material-ui';
 import * as React from 'react';
 import {NavLink} from 'react-router-dom';
+import {DrawerMenuItem} from './DrawerMenuItem';
 
 const drawerWidth = 240;
 
@@ -58,28 +56,9 @@ const decoratedDrawer = decorate<IDrawerProps>(({children, classes}) => (
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        <NavLink to="/clock" style={{textDecoration: 'none'}}>
-          <ListItem button={true}>
-            <ListItemIcon>
-              <Clock />
-            </ListItemIcon>
-            <ListItemText primary="Clock" secondary="Link Here" />
-          </ListItem>
-        </NavLink>
-        <NavLink to="/buttons" style={{textDecoration: 'none'}}>
-          <ListItem button={true}>
-            <ListItemIcon>
-              <GestureTap />
-            </ListItemIcon>
-            <ListItemText primary="Buttons" />
-          </ListItem>
-        </NavLink>
-        <ListItem button={true}>
-          <ListItemIcon>
-            <GestureTap />
-          </ListItemIcon>
-          <ListItemText primary="Non Link" secondary="No Link Here" />
-        </ListItem>
+        <DrawerMenuItem to="/clock" primary="Clock" secondary="Link Here" icon={<Clock />} />
+        <DrawerMenuItem to="/buttons" primary="Buttons" icon={<GestureTap />} />
+        <DrawerMenuItem primary="Non Link" secondary="No Link Here" icon={<GestureTap />} />
       </List>
     </Drawer>
     <main className={classes.content}>
