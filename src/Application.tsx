@@ -5,6 +5,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import {AppDrawer} from './components/Drawer';
 import {ButtonPage} from './pages/Buttons';
 import {ClockPage} from './pages/Clock';
+import {HomePage} from './pages/Home';
 
 const app = () => {
   return (
@@ -12,6 +13,7 @@ const app = () => {
       <CssBaseline />
       <BrowserRouter>
         <AppDrawer>
+          <Route path="/" exact={true} component={HomePage} />
           <Route path="/clock" component={ClockPage} />
           <Route path="/buttons" component={ButtonPage} />
         </AppDrawer>

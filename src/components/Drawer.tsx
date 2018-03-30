@@ -7,7 +7,7 @@ import {
   Typography,
   withStyles,
 } from 'material-ui';
-import {Clock, GestureTap} from 'mdi-material-ui';
+import {Clock, GestureTap, Home} from 'mdi-material-ui';
 import * as React from 'react';
 import {DrawerMenuItem} from './DrawerMenuItem';
 
@@ -55,6 +55,7 @@ const decoratedDrawer = decorate<IDrawerProps>(({children, classes}) => (
       <div className={classes.toolbar} />
       <Divider />
       <List>
+        <DrawerMenuItem to="/" primary="Home" icon={<Home />} />
         <DrawerMenuItem
           to="/clock"
           primary="Clock"
@@ -62,12 +63,6 @@ const decoratedDrawer = decorate<IDrawerProps>(({children, classes}) => (
           icon={<Clock />}
         />
         <DrawerMenuItem to="/buttons" primary="Buttons" icon={<GestureTap />} />
-        <DrawerMenuItem
-          to="/"
-          primary="Non Link"
-          secondary="No Link Here"
-          icon={<GestureTap />}
-        />
       </List>
     </Drawer>
     <main className={classes.content}>

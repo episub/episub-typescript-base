@@ -4,14 +4,10 @@ import {
   ClassesFancyButton,
   ClassNamesFancyButton,
 } from '../components/FancyButton';
-import {Welcome} from '../components/Welcome';
 
 const buttonPage = () => {
   return (
     <Grid container={true} spacing={16}>
-      <Grid item={true} xs={3}>
-        <Welcome name="User" />
-      </Grid>
       <Grid item={true}>
         <Card>
           <CardContent>
