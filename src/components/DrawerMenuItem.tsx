@@ -11,40 +11,28 @@ const MenuItem = props => {
   );
 };
 
-const MenuItemLinked = props => {
-  return (
-    <NavLink
-      to={props.to ? props.to : ''}
-      style={{textDecoration: 'none'}}
-    >
-      <MenuItem
-        primary={props.primary}
-        secondary={props.secondary}
-        icon={props.icon}
-      />
-    </NavLink>
-  );
-};
-
 export class DrawerMenuItem extends React.Component<any> {
   public render() {
-    if (this.props.to) {
-      return (
-        <MenuItemLinked
-          to={this.props.to}
-          primary={this.props.primary}
-          secondary={this.props.secondary}
-          icon={this.props.icon}
-        />
-      );
-    }
-
-    return (
+    const menuItem = (
       <MenuItem
         primary={this.props.primary}
         secondary={this.props.secondary}
         icon={this.props.icon}
       />
     );
+
+    // If we are given a link 'to', then wrap in NavLink, otherwise return just component
+    if (this.props.to) {
+      return (
+        <NavLink
+          to={this.props.to ? this.props.to : ''}
+          style={{textDecoration: 'none'}}
+        >
+          {menuItem}
+        </NavLink>
+      );
+    }
+
+    return menuItem;
   }
 }
