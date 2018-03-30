@@ -63,6 +63,7 @@ const decoratedDrawer = decorate<IDrawerProps>(({children, classes}) => (
         />
         <DrawerMenuItem to="/buttons" primary="Buttons" icon={<GestureTap />} />
         <DrawerMenuItem
+          to="/"
           primary="Non Link"
           secondary="No Link Here"
           icon={<GestureTap />}

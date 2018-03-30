@@ -1,8 +1,15 @@
+import * as H from 'history';
 import {ListItem, ListItemIcon, ListItemText} from 'material-ui';
 import * as React from 'react';
 import {NavLink} from 'react-router-dom';
 
-const MenuItem = props => {
+interface IMenuItemProps {
+  icon: React.ReactElement<any>;
+  primary: React.ReactNode;
+  secondary?: React.ReactNode;
+}
+
+const MenuItem: React.SFC<IMenuItemProps> = props => {
   return (
     <ListItem button={true}>
       <ListItemIcon>{props.icon}</ListItemIcon>
@@ -11,7 +18,13 @@ const MenuItem = props => {
   );
 };
 
-export class DrawerMenuItem extends React.Component<any> {
+interface IDrawerMenuItemProps {
+  to: H.LocationDescriptor;
+}
+
+export class DrawerMenuItem extends React.Component<
+  IMenuItemProps & IDrawerMenuItemProps
+> {
   public render() {
     const menuItem = (
       <MenuItem
@@ -21,15 +34,10 @@ export class DrawerMenuItem extends React.Component<any> {
       />
     );
 
-    // If we are given a link 'to', then wrap in NavLink, otherwise return just component
-    if (this.props.to) {
-      return (
-        <NavLink to={this.props.to} style={{textDecoration: 'none'}}>
-          {menuItem}
-        </NavLink>
-      );
-    }
-
-    return menuItem;
+    return (
+      <NavLink to={this.props.to} style={{textDecoration: 'none'}}>
+        {menuItem}
+      </NavLink>
+    );
   }
 }

@@ -37,11 +37,11 @@
     "format-all": "yarn prettier --write \"**/*.@(ts*|js*|json)\"",
     "lint": "yarn tsc --pretty && yarn tslint -p ./tsconfig.json",
     "fix": "yarn tslint -p ./tsconfig.json --fix",
-    "auto-upgrade":
-      "yarn upgrade --latest && yarn add -D typescript@next && yarn add material-ui@next"
+    "auto-upgrade": "yarn upgrade --latest && yarn add -D typescript@next && yarn add material-ui@next"
   },
   "dependencies": {
     "debug": "^3.1.0",
+    "history": "^4.7.2",
     "material-ui": "^1.0.0-beta.39",
     "mdi-material-ui": "^3.2.0",
     "react": "^16.2.0",
