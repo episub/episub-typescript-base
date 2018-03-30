@@ -25,7 +25,7 @@ export class DrawerMenuItem extends React.Component<any> {
     if (this.props.to) {
       return (
         <NavLink
-          to={this.props.to ? this.props.to : ''}
+          to={this.props.to}
           style={{textDecoration: 'none'}}
         >
           {menuItem}
