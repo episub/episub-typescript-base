@@ -1,7 +1,8 @@
 {
   "extends": ["tslint:recommended", "tslint-xo/space", "tslint-react"],
   "rules": {
-    "quotemark": [true, "single", "jsx-double"]
+    "quotemark": [true, "single", "jsx-double"],
+    "variable-name": [true, "ban-keywords", "allow-pascal-case"]
   },
   "defaultSeverity": "warning"
 }

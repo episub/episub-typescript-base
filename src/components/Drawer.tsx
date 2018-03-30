@@ -9,7 +9,6 @@ import {
 } from 'material-ui';
 import {Clock, GestureTap} from 'mdi-material-ui';
 import * as React from 'react';
-import {NavLink} from 'react-router-dom';
 import {DrawerMenuItem} from './DrawerMenuItem';
 
 const drawerWidth = 240;
