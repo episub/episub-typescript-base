@@ -24,10 +24,7 @@ export class DrawerMenuItem extends React.Component<any> {
     // If we are given a link 'to', then wrap in NavLink, otherwise return just component
     if (this.props.to) {
       return (
-        <NavLink
-          to={this.props.to}
-          style={{textDecoration: 'none'}}
-        >
+        <NavLink to={this.props.to} style={{textDecoration: 'none'}}>
           {menuItem}
         </NavLink>
       );
