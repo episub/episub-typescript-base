@@ -5,7 +5,7 @@ import {
   ClassNamesFancyButton,
 } from '../components/FancyButton';
 
-const buttonPage = () => {
+const buttonPage: React.SFC = () => {
   return (
     <Grid container={true} spacing={16}>
       <Grid item={true}>

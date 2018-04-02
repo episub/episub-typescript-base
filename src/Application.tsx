@@ -7,7 +7,7 @@ import {ButtonPage} from './pages/Buttons';
 import {ClockPage} from './pages/Clock';
 import {HomePage} from './pages/Home';
 
-const app = () => {
+const app: React.SFC = () => {
   return (
     <div>
       <CssBaseline />
