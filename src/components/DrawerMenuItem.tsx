@@ -13,13 +13,15 @@ interface IDrawerMenuItemProps {
 export class DrawerMenuItem extends React.Component<IDrawerMenuItemProps> {
   public render() {
     return (
-      <ListItem component={NavLink} to={this.props.to} button={true}>
-        <ListItemIcon>{this.props.icon}</ListItemIcon>
-        <ListItemText
-          primary={this.props.primary}
-          secondary={this.props.secondary}
-        />
-      </ListItem>
+      <NavLink to={this.props.to} style={{textDecoration: 'none'}}>
+        <ListItem button={true}>
+          <ListItemIcon>{this.props.icon}</ListItemIcon>
+          <ListItemText
+            primary={this.props.primary}
+            secondary={this.props.secondary}
+          />
+        </ListItem>
+      </NavLink>
     );
   }
 }

@@ -35,7 +35,7 @@
     "dev": "webpack --progress --mode development",
     "build": "webpack --progress --mode production",
     "format-all": "yarn prettier --write \"**/*.@(ts*|js*|json)\"",
-    "lint": "yarn tsc --pretty && yarn tslint -p ./tsconfig.json",
+    "lint": "yarn tsc --pretty --noEmit && yarn tslint -p ./tsconfig.json",
     "fix": "yarn tslint -p ./tsconfig.json --fix",
     "auto-upgrade": "yarn upgrade --latest && yarn add -D typescript@next && yarn add material-ui@next"
   },
