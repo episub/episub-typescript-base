@@ -55,14 +55,14 @@ const decoratedDrawer = decorate<IDrawerProps>(({children, classes}) => (
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        <DrawerMenuItem to="/" primary="Home" icon={<Home />} />
+        <DrawerMenuItem to="home" primary="Home" icon={<Home />} />
         <DrawerMenuItem
-          to="/clock"
+          to="clock"
           primary="Clock"
           secondary="Link Here"
           icon={<Clock />}
         />
-        <DrawerMenuItem to="/buttons" primary="Buttons" icon={<GestureTap />} />
+        <DrawerMenuItem to="buttons" primary="Buttons" icon={<GestureTap />} />
       </List>
     </Drawer>
     <main className={classes.content}>

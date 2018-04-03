@@ -6,7 +6,8 @@
     "sourceMap": true,
     "outDir": "dist/tsc",
     "strictNullChecks": true,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "experimentalDecorators": true
   },
   "include": ["src/**/*", "webpack.config.ts"]
 }

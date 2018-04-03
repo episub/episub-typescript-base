@@ -1,7 +1,7 @@
 import * as H from 'history';
 import {ListItem, ListItemIcon, ListItemText} from 'material-ui';
+import {inject} from 'mobx-react';
 import * as React from 'react';
-import {NavLink} from 'react-router-dom';
 
 interface IDrawerMenuItemProps {
   icon: React.ReactElement<any>;
@@ -10,18 +10,22 @@ interface IDrawerMenuItemProps {
   to: H.LocationDescriptor;
 }
 
+@inject('rootStore')
 export class DrawerMenuItem extends React.Component<IDrawerMenuItemProps> {
   public render() {
     return (
-      <NavLink to={this.props.to} style={{textDecoration: 'none'}}>
-        <ListItem button={true}>
-          <ListItemIcon>{this.props.icon}</ListItemIcon>
-          <ListItemText
-            primary={this.props.primary}
-            secondary={this.props.secondary}
-          />
-        </ListItem>
-      </NavLink>
+      <ListItem button={true} onClick={this.handleClick}>
+        <ListItemIcon>{this.props.icon}</ListItemIcon>
+        <ListItemText
+          primary={this.props.primary}
+          secondary={this.props.secondary}
+        />
+      </ListItem>
     );
   }
+
+  public handleClick = () => {
+    const {rootStore: {routerStore}} = this.props;
+    routerStore.goTo(this.props.to);
+  };
 }
