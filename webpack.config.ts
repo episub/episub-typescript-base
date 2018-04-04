@@ -58,7 +58,7 @@ const config = {
   plugins: [
     new HtmlWebPackPlugin({
       filename: './index.html',
-      template: './src/index.html',
+      template: './src/assets/index.html',
     }),
     new WebappWebpackPlugin({
       favicons: {
@@ -73,7 +73,7 @@ const config = {
           yandex: false, // Create Yandex browser icon. `boolean` or `{ background }`
         },
       },
-      logo: './src/wrench.svg',
+      logo: './src/assets/wrench.svg',
     }),
     new ForkTsCheckerWebpackPlugin({
       tslint: true,

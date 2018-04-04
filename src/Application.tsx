@@ -1,33 +1,22 @@
 import {CssBaseline} from 'material-ui';
-import {inject, Provider} from 'mobx-react';
-import {HistoryAdapter, RouterView} from 'mobx-state-router';
 import * as React from 'react';
 import {hot} from 'react-hot-loader';
+import {Route, Router, Switch} from 'react-router';
 import {AppDrawer} from './components/Drawer';
-import {RouterShell} from './pages/RouterShell';
-import {RootStore} from './stores/root.store';
-import {history} from './utils/history';
+import {ButtonPage, ClockPage, HomePage, Root} from './pages';
 
-// Create the rootStore
-const rootStore = new RootStore();
-
-// Observe history changes
-const historyAdapter = new HistoryAdapter(rootStore.routerStore, history);
-historyAdapter.observeRouterStateChanges();
-
-const app: React.SFC = () => {
-  return (
-    <Provider rootStore={rootStore}>
-      <div>
-        <CssBaseline />
-        <AppDrawer>
-          <RouterShell />
-        </AppDrawer>
-      </div>
-    </Provider>
-  );
-};
-
-const hotApp = hot(module)(app);
-
-export {hotApp as App};
+// Render react DOM
+export const App = hot(module)(({history}) => (
+  <Root>
+    <CssBaseline />
+    <AppDrawer>
+      <Router history={history}>
+        <Switch>
+          <Route path="/buttons" component={ButtonPage} />
+          <Route path="/clock" component={ClockPage} />
+          <Route path="/" component={HomePage} />
+        </Switch>
+      </Router>
+    </AppDrawer>
+  </Root>
+));
