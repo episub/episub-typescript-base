@@ -9,7 +9,7 @@ import {
 } from 'material-ui';
 import {Clock, GestureTap, Home} from 'mdi-material-ui';
 import * as React from 'react';
-import {DrawerMenuItem} from './DrawerMenuItem';
+import {DrawerMenuItem} from '../components';
 
 const drawerWidth = 240;
 
