@@ -1,9 +1,20 @@
-import {Card, CardContent, Grid, Typography} from 'material-ui';
+import {Card, CardContent, Grid, Toolbar, Typography} from 'material-ui';
 import * as React from 'react';
 import {
   ClassesFancyButton,
   ClassNamesFancyButton,
 } from '../components/FancyButton';
+
+const buttonToolbar: React.SFC = () => {
+  return (
+    <Toolbar>
+      <Typography variant="title" color="inherit" style={{flex: 1}}>
+        Fancy Buttons
+      </Typography>
+      <ClassesFancyButton />
+    </Toolbar>
+  );
+};
 
 const buttonPage: React.SFC = () => {
   return (
@@ -26,4 +37,4 @@ const buttonPage: React.SFC = () => {
   );
 };
 
-export {buttonPage as ButtonPage};
+export {buttonPage as ButtonPage, buttonToolbar as ButtonToolbar};
