@@ -3,7 +3,7 @@ import {ListItem, ListItemIcon, ListItemText} from 'material-ui';
 import {inject} from 'mobx-react';
 import * as React from 'react';
 import {STORE_ROUTER} from '../constants';
-import {RouterStore} from '../stores/RouterStore';
+import {RouterStore} from '../stores';
 
 interface IDrawerMenuItemProps {
   icon: React.ReactElement<any>;
