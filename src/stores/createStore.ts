@@ -8,6 +8,6 @@ export const createStores = (history: History) => {
 
   return {
     [STORE_ROUTER]: routerStore,
-    [STORE_TIME]: timeStore
+    [STORE_TIME]: timeStore,
   };
 };
