@@ -1,10 +1,4 @@
-import {
-  AppBar,
-  Divider,
-  Drawer,
-  List,
-  withStyles,
-} from 'material-ui';
+import {AppBar, Divider, Drawer, List, withStyles} from 'material-ui';
 import {Clock, GestureTap, Home} from 'mdi-material-ui';
 import * as React from 'react';
 import {AppToolbar, DrawerMenuItem} from '../components';

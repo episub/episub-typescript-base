@@ -6,7 +6,7 @@ import {RouterStore} from '../stores';
 
 @inject(STORE_ROUTER)
 @observer
-export class AppToolbar extends React.Component<{}> {
+export class AppToolbar extends React.Component {
   public render() {
     const router = this.props[STORE_ROUTER] as RouterStore;
 
