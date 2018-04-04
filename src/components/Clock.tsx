@@ -1,31 +1,30 @@
 import * as Debug from 'debug';
 import {Card, CardContent, Typography} from 'material-ui';
+import {inject, observer} from 'mobx-react';
 import * as React from 'react';
+import {STORE_TIME} from '../constants';
+import {TimeStore} from '../stores';
 
 const logger = Debug('component:Clock');
 
-interface IClockState {
-  date: Date;
-  live: number;
-}
-
-export class Clock extends React.Component<any, IClockState> {
+@inject(STORE_TIME)
+@observer
+export class Clock extends React.Component {
   private timerID: any;
-  constructor(props: any) {
-    super(props);
-    this.state = {date: new Date(), live: 0};
-  }
+  private readonly timerMilliseconds = 1000;
 
   public render() {
+    const time = this.props[STORE_TIME] as TimeStore;
+
     return (
       <Card>
         <CardContent>
           <Typography variant="title">Clock</Typography>
           <Typography variant="display1">
-            {this.state.date.toLocaleTimeString()}
+            {time.lastTick.toLocaleTimeString()}
           </Typography>
           <Typography variant="body1">
-            Runtime: {this.state.live} sec
+            Runtime: {time.activeSeconds} sec
           </Typography>
         </CardContent>
       </Card>
@@ -34,7 +33,7 @@ export class Clock extends React.Component<any, IClockState> {
 
   public componentDidMount() {
     logger('Clock Loaded');
-    this.timerID = setInterval(() => this.tick(), 1000);
+    this.timerID = setInterval(() => this.tick(), this.timerMilliseconds);
   }
 
   public componentWillUnmount() {
@@ -42,9 +41,7 @@ export class Clock extends React.Component<any, IClockState> {
   }
 
   private tick() {
-    this.setState(prevState => ({
-      date: new Date(),
-      live: prevState.live + 1,
-    }));
+    const time = this.props[STORE_TIME] as TimeStore;
+    time.incrementActiveSeconds(this.timerMilliseconds / 1000);
   }
 }
