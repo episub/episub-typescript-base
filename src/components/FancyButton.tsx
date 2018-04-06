@@ -27,9 +27,9 @@ const classNamesFancyButton = withStyles(classNameStyles)(
 );
 
 // Material-UI CSS API Injection
-const classesStyles = {
+const decorate = withStyles(() => ({
   label: {
-    textTransform: 'capitalize',
+    textTransform: 'capitalize' as 'capitalize',
   },
   root: {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -37,20 +37,20 @@ const classesStyles = {
     borderRadius: 3,
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .30)',
     color: 'white',
-    height: 48,
+    height: 40,
     padding: '0 30px',
   },
-};
+}));
 
-const overrideWithClasses = props => {
-  return (
-    <Button classes={{root: props.classes.root, label: props.classes.label}}>
-      {props.children ? props.children : 'classes'}
+interface IFancyProps {
+  children?: React.ReactNode;
+}
+
+const classesFancyButton = decorate<IFancyProps>(({children, classes}) => (
+    <Button classes={classes}>
+      {children ? children : 'classes'}
     </Button>
-  );
-};
-
-const classesFancyButton = withStyles(classesStyles)(overrideWithClasses);
+));
 
 export {
   classesFancyButton as ClassesFancyButton,
