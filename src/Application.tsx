@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {hot} from 'react-hot-loader';
 import {Route, Router, Switch} from 'react-router';
 import {AppDrawer, ButtonPage, ClockPage, HomePage, Root} from './pages';
 
@@ -13,7 +12,7 @@ AppDrawer. It might be more worthwhile to have the Toolbar as a single component
 rather than multiple components inside a Switch and instead the Toolbar content is
 controlled by mobx stores
 */
-export const App = hot(module)(({history}) => (
+export const App = ({history}) => (
   <Root>
     <Router history={history}>
       <AppDrawer>
@@ -25,4 +24,4 @@ export const App = hot(module)(({history}) => (
       </AppDrawer>
     </Router>
   </Root>
-));
+);
