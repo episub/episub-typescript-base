@@ -4,7 +4,7 @@ This is a bootstrap repo designed to formalise the recommended way to build sing
 
 ## Bugs
 
-* Every second build the typescript compiler reports modules not found. The build still succeeds and the code is still valid. This is assumed to be an issue with react-hot-loader.
+* Every second build the typescript compiler reports modules not found. The build still succeeds and the code is still valid. Originally it this issue appeared to be caused by react-hot-loader, that no longer seems to be the case as even with `--hot` completely disabled the `TS2307` errors still occur.
 
 ## Adding new packages
 

@@ -6,8 +6,12 @@
     "sourceMap": true,
     "outDir": "dist/tsc",
     "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "noImplicitAny": false,
     "experimentalDecorators": true
   },
-  "include": ["src/**/*", "webpack.config.ts"]
+  "files": ["webpack.config.ts"],
+  "include": ["src/**/*"],
+  "exclude": ["./node_modules", "./dist"]
 }
