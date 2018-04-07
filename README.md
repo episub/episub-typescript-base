@@ -2,6 +2,18 @@
 
 This is a bootstrap repo designed to formalise the recommended way to build single page client side applications at Episub.
 
+## Bugs
+
+In the console when the site is first opened React 16.3 will report "unsafe legacy lifecycles". This is due to react-hot-loader and can be ignored. A future update to react-hot-loader should fix this.
+
+## TODO
+
+* Implement happypack to multithread loaders. This might not be possible with nested loaders but worth checking out when code base gets larger.
+* Implement a React ErrorBoundary example
+* Improve method of displaying dynamic content in the toolbar
+* Make the drawer hide when the screen size is very small (and use a toolbar button to show/hide)
+* Create individual pages for demoing each library in use by the boilerplate with documentation for the examples written on those pages rather than relying on documentation in the readme
+
 ## Adding new packages
 
 This setup comes with a set of standard packages recommended for using to build a client side application. If you wish to add more make sure you include type definitions for any dependencies that don't include them by default.
@@ -95,11 +107,3 @@ Note: If a breakpoint for your code is immediately executed by the browser then 
 ## Notes
 
 * [Fork TS Checker Webpack Plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin) does not function correctly. When in operation every second or sometimes every build the forked compiler will report missing modules (even though webpack can find and compile the bundle fine). In order to maintain build error consistency the plugin has been removed.
-
-## TODO
-
-* Implement happypack to multithread loaders. This might not be possible with nested loaders but worth checking out when code base gets larger.
-* Implement a React ErrorBoundary example
-* Improve method of displaying dynamic content in the toolbar
-* Make the drawer hide when the screen size is very small (and use a toolbar button to show/hide)
-* Create individual pages for demoing each library in use by the boilerplate with documentation for the examples written on those pages rather than relying on documentation in the readme
