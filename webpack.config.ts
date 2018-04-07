@@ -2,11 +2,21 @@ import * as HtmlWebPackPlugin from 'html-webpack-plugin';
 import * as WebappWebpackPlugin from 'webapp-webpack-plugin';
 import * as webpack from 'webpack';
 
-const babelConfig = {
+const babelLoaderConfig = {
   loader: 'babel-loader',
   options: {
+    babelrc: true,
     cacheDirectory: true,
   },
+};
+
+const tsLoaderConfig = {
+  loader: 'ts-loader',
+};
+
+const htmlLoaderConfig = {
+  loader: 'html-loader',
+  options: {minimize: true},
 };
 
 const config: webpack.Configuration = {
@@ -22,26 +32,16 @@ const config: webpack.Configuration = {
       {
         exclude: /node_modules/,
         test: /\.ts(x?)$/,
-        use: [
-          babelConfig,
-          {
-            loader: 'ts-loader',
-          },
-        ],
+        use: [babelLoaderConfig, tsLoaderConfig],
       },
       {
         exclude: /node_modules/,
         test: /\.js(x?)$/,
-        use: [babelConfig],
+        use: [babelLoaderConfig],
       },
       {
         test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-            options: {minimize: true},
-          },
-        ],
+        use: [htmlLoaderConfig],
       },
     ],
   },
