@@ -2,10 +2,6 @@
 
 This is a bootstrap repo designed to formalise the recommended way to build single page client side applications at Episub.
 
-## Bugs
-
-* Every second build the typescript compiler reports modules not found. The build still succeeds and the code is still valid. Originally it this issue appeared to be caused by react-hot-loader, that no longer seems to be the case as even with `--hot` completely disabled the `TS2307` errors still occur.
-
 ## Adding new packages
 
 This setup comes with a set of standard packages recommended for using to build a client side application. If you wish to add more make sure you include type definitions for any dependencies that don't include them by default.
@@ -26,7 +22,7 @@ The bundle is setup to use 'source-map' which will emit the source maps in a sep
 
 #### ts-loader
 
-Webpack will load all `.ts` and `.tsx` files through ts-loader. The files will be transpiled from typescript into esnext javascript code and leave any jsx code untouched. The typescript won't be type checked at this stage.
+Webpack will load all `.ts` and `.tsx` files through ts-loader. The files will be transpiled from typescript into esnext javascript code and leave any jsx code untouched. `tsc` the typescript compiler will also perform type checking during this phase. If it finds any errors the whole webpack build will not succeed. These errors should appear both in the terminal running the `yarn start` command and in the console of any browsers connected to the webpack-dev-server.
 
 #### babel-loader
 
@@ -39,18 +35,6 @@ Emits the html files processed by the html plugin as part of our final bundle al
 Note: If your html template includes images or links you may need additional loaders. See the [documentation](https://webpack.js.org/loaders/html-loader/) for additional detail if you require more options.
 
 ### Plugins
-
-#### Fork-Ts-Checker
-
-When ts-loader transpiles our typescript we don't type check because we perform our typing and linting here in a separate fork in improve build speeds. Fork-Ts-Checker will run the tsc compiler and tslint in a separate fork to the actual build. Usually the build itself will finish slightly before the type checking.
-
-Note: Fork-Ts-Checker is pulling its settings from `tsconfig.json` not from `webpack.config.ts` so make sure that `tsconfig.json` is configured to point to all the files you wish to be checked.
-
-Note: Fork-Ts-Checker will not check .js files but can be configured to do so if the appropriate setting is enabled in `tsconfig.json` and `tslint.json`.
-
-#### Fork-Ts-Checker-Notifier
-
-Fork-Ts-Checker-Notifier will send system notifications on completion of ts-checker on every build. This will make easier to see if new rebuilds are causing errors even if the running terminal isn't visible. Notifications should appear without any configuration on your part but you can check the [requirements](https://github.com/mikaelbr/node-notifier#requirements) in the documentation for node-notifier.
 
 #### HTML
 
@@ -108,10 +92,13 @@ Run your development instance like normal (`yarn start`) and set some breakpoint
 
 Note: If a breakpoint for your code is immediately executed by the browser then it may be executed before the debugger can attach to the browser. You may need to refresh the page in the browser to catch such early breakpoints.
 
+## Notes
+
+* [Fork TS Checker Webpack Plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin) does not function correctly. When in operation every second or sometimes every build the forked compiler will report missing modules (even though webpack can find and compile the bundle fine). In order to maintain build error consistency the plugin has been removed.
+
 ## TODO
 
-* Implement happypack to multithread loaders. This might not be possible with
-  nested loaders but worth checking out when code base gets larger.
+* Implement happypack to multithread loaders. This might not be possible with nested loaders but worth checking out when code base gets larger.
 * Implement a React ErrorBoundary example
 * Improve method of displaying dynamic content in the toolbar
 * Make the drawer hide when the screen size is very small (and use a toolbar button to show/hide)
