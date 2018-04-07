@@ -1,5 +1,3 @@
-import * as ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-webpack-plugin';
-import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import * as HtmlWebPackPlugin from 'html-webpack-plugin';
 import * as WebappWebpackPlugin from 'webapp-webpack-plugin';
 import * as webpack from 'webpack';
@@ -21,7 +19,6 @@ const config: webpack.Configuration = {
           'babel-loader',
           {
             loader: 'ts-loader',
-            options: {transpileOnly: true},
           },
         ],
       },
@@ -76,11 +73,6 @@ const config: webpack.Configuration = {
       },
       logo: './src/assets/wrench.svg',
     }),
-    new ForkTsCheckerWebpackPlugin({
-      tslint: true,
-      workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE,
-    }),
-    new ForkTsCheckerNotifierWebpackPlugin(),
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
