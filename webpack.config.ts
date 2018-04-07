@@ -2,6 +2,13 @@ import * as HtmlWebPackPlugin from 'html-webpack-plugin';
 import * as WebappWebpackPlugin from 'webapp-webpack-plugin';
 import * as webpack from 'webpack';
 
+const babelConfig = {
+  loader: 'babel-loader',
+  options: {
+    cacheDirectory: true,
+  },
+};
+
 const config: webpack.Configuration = {
   devServer: {
     clientLogLevel: 'warning',
@@ -16,7 +23,7 @@ const config: webpack.Configuration = {
         exclude: /node_modules/,
         test: /\.ts(x?)$/,
         use: [
-          'babel-loader',
+          babelConfig,
           {
             loader: 'ts-loader',
           },
@@ -25,9 +32,7 @@ const config: webpack.Configuration = {
       {
         exclude: /node_modules/,
         test: /\.js(x?)$/,
-        use: {
-          loader: 'babel-loader',
-        },
+        use: [babelConfig],
       },
       {
         test: /\.html$/,
