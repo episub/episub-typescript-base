@@ -47,9 +47,7 @@ interface IFancyProps {
 }
 
 const classesFancyButton = decorate<IFancyProps>(({children, classes}) => (
-    <Button classes={classes}>
-      {children ? children : 'classes'}
-    </Button>
+  <Button classes={classes}>{children ? children : 'classes'}</Button>
 ));
 
 export {

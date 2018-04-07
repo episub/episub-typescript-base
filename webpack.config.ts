@@ -1,8 +1,23 @@
-import * as ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-webpack-plugin';
-import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import * as HtmlWebPackPlugin from 'html-webpack-plugin';
 import * as WebappWebpackPlugin from 'webapp-webpack-plugin';
 import * as webpack from 'webpack';
+
+const babelLoaderConfig = {
+  loader: 'babel-loader',
+  options: {
+    babelrc: true,
+    cacheDirectory: true,
+  },
+};
+
+const tsLoaderConfig = {
+  loader: 'ts-loader',
+};
+
+const htmlLoaderConfig = {
+  loader: 'html-loader',
+  options: {minimize: true},
+};
 
 const config: webpack.Configuration = {
   devServer: {
@@ -17,29 +32,16 @@ const config: webpack.Configuration = {
       {
         exclude: /node_modules/,
         test: /\.ts(x?)$/,
-        use: [
-          'babel-loader',
-          {
-            loader: 'ts-loader',
-            options: {transpileOnly: true},
-          },
-        ],
+        use: [babelLoaderConfig, tsLoaderConfig],
       },
       {
         exclude: /node_modules/,
         test: /\.js(x?)$/,
-        use: {
-          loader: 'babel-loader',
-        },
+        use: [babelLoaderConfig],
       },
       {
         test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-            options: {minimize: true},
-          },
-        ],
+        use: [htmlLoaderConfig],
       },
     ],
   },
@@ -76,11 +78,6 @@ const config: webpack.Configuration = {
       },
       logo: './src/assets/wrench.svg',
     }),
-    new ForkTsCheckerWebpackPlugin({
-      tslint: true,
-      workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE,
-    }),
-    new ForkTsCheckerNotifierWebpackPlugin(),
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
