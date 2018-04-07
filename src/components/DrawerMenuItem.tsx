@@ -1,38 +1,39 @@
+import * as H from 'history';
 import {ListItem, ListItemIcon, ListItemText} from 'material-ui';
+import {inject} from 'mobx-react';
 import * as React from 'react';
-import {NavLink} from 'react-router-dom';
+import {STORE_ROUTER} from '../constants';
+import {RouterStore} from '../stores';
 
-const MenuItem = props => {
-  return (
-    <ListItem button={true}>
-      <ListItemIcon>{props.icon}</ListItemIcon>
-      <ListItemText primary={props.primary} secondary={props.secondary} />
-    </ListItem>
-  );
-};
+interface IDrawerMenuItemProps {
+  icon: React.ReactElement<any>;
+  primary: React.ReactNode;
+  secondary?: React.ReactNode;
+  to: H.LocationDescriptor;
+}
 
-export class DrawerMenuItem extends React.Component<any> {
+@inject(STORE_ROUTER)
+export class DrawerMenuItem extends React.Component<IDrawerMenuItemProps> {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   public render() {
-    const menuItem = (
-      <MenuItem
-        primary={this.props.primary}
-        secondary={this.props.secondary}
-        icon={this.props.icon}
-      />
+    return (
+      <ListItem button={true} onClick={this.handleClick}>
+        <ListItemIcon>{this.props.icon}</ListItemIcon>
+        <ListItemText
+          primary={this.props.primary}
+          secondary={this.props.secondary}
+        />
+      </ListItem>
     );
+  }
 
-    // If we are given a link 'to', then wrap in NavLink, otherwise return just component
-    if (this.props.to) {
-      return (
-        <NavLink
-          to={this.props.to}
-          style={{textDecoration: 'none'}}
-        >
-          {menuItem}
-        </NavLink>
-      );
-    }
+  private handleClick() {
+    const router = this.props[STORE_ROUTER] as RouterStore;
 
-    return menuItem;
+    router.push(this.props.to as string);
   }
 }

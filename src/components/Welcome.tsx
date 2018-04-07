@@ -1,7 +1,11 @@
 import {Card, CardContent, Typography} from 'material-ui';
 import * as React from 'react';
 
-const welcome = props => {
+interface IWelcomeProps {
+  name: string;
+}
+
+const welcome: React.SFC<IWelcomeProps> = props => {
   return (
     <Card>
       {' '}

@@ -1,15 +1,9 @@
-import {
-  AppBar,
-  Divider,
-  Drawer,
-  List,
-  Toolbar,
-  Typography,
-  withStyles,
-} from 'material-ui';
-import {Clock, GestureTap} from 'mdi-material-ui';
+import {AppBar, Divider, Drawer, List, withStyles} from 'material-ui';
+import {Clock, GestureTap, Home} from 'mdi-material-ui';
 import * as React from 'react';
-import {DrawerMenuItem} from './DrawerMenuItem';
+import {Route, Switch} from 'react-router';
+import {AppToolbar, DrawerMenuItem} from '../components';
+import {ButtonToolbar} from '../pages';
 
 const drawerWidth = 240;
 
@@ -45,19 +39,18 @@ interface IDrawerProps {
 const decoratedDrawer = decorate<IDrawerProps>(({children, classes}) => (
   <div className={classes.root}>
     <AppBar position="absolute" className={classes.appBar}>
-      <Toolbar>
-        <Typography variant="title" color="inherit">
-          Permanent drawer
-        </Typography>
-      </Toolbar>
+      <Switch>
+        <Route path="/buttons" component={ButtonToolbar} />
+        <Route path="/" component={AppToolbar} />
+      </Switch>
     </AppBar>
     <Drawer variant="permanent" classes={{paper: classes.drawerPaper}}>
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        <DrawerMenuItem to="/clock" primary="Clock" secondary="Link Here" icon={<Clock />} />
-        <DrawerMenuItem to="/buttons" primary="Buttons" icon={<GestureTap />} />
-        <DrawerMenuItem primary="Non Link" secondary="No Link Here" icon={<GestureTap />} />
+        <DrawerMenuItem to="home" primary="Home" icon={<Home />} />
+        <DrawerMenuItem to="clock" primary="Clock" icon={<Clock />} />
+        <DrawerMenuItem to="buttons" primary="Buttons" icon={<GestureTap />} />
       </List>
     </Drawer>
     <main className={classes.content}>

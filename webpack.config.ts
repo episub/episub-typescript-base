@@ -2,8 +2,9 @@ import * as ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-we
 import * as ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import * as HtmlWebPackPlugin from 'html-webpack-plugin';
 import * as WebappWebpackPlugin from 'webapp-webpack-plugin';
+import * as webpack from 'webpack';
 
-const config = {
+const config: webpack.Configuration = {
   devServer: {
     clientLogLevel: 'warning',
     disableHostCheck: true,
@@ -58,7 +59,7 @@ const config = {
   plugins: [
     new HtmlWebPackPlugin({
       filename: './index.html',
-      template: './src/index.html',
+      template: './src/assets/index.html',
     }),
     new WebappWebpackPlugin({
       favicons: {
@@ -73,7 +74,7 @@ const config = {
           yandex: false, // Create Yandex browser icon. `boolean` or `{ background }`
         },
       },
-      logo: './src/wrench.svg',
+      logo: './src/assets/wrench.svg',
     }),
     new ForkTsCheckerWebpackPlugin({
       tslint: true,
