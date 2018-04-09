@@ -8,7 +8,6 @@ In the console when the site is first opened React 16.3 will report "unsafe lega
 
 ## TODO
 
-* Implement happypack to multithread loaders. This might not be possible with nested loaders but worth checking out when code base gets larger.
 * Implement a React ErrorBoundary example
 * Improve method of displaying dynamic content in the toolbar
 * Make the drawer hide when the screen size is very small (and use a toolbar button to show/hide)
@@ -21,6 +20,8 @@ This setup comes with a set of standard packages recommended for using to build 
 ## Build Setup
 
 This repo is setup using Webpack 4. With babel + typescript loaders and separate vendor bundling. Details about each section in the config are listed below.
+
+Note: Installing 'phantomjs' to the PATH on your local system can significantly increase the speed of yarn actions that involve installing or updating dependencies.
 
 ### Hot Reloading
 
